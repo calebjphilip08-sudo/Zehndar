@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zehndar</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <meta id="meta-theme-color" name="theme-color" content="#071025">
+    <script src="theme.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><span>Zehndar</span></a>
+            <button class="hamburger-menu" aria-label="Toggle menu"
+                onclick="this.classList.toggle('active');document.querySelector('.nav-links').classList.toggle('mobile-open');">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="character-profiles.html">Character Profiles</a></li>
+                <li class="dropdown">
+                    <span class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Weapons</span>
+                    <div class="dropdown-content">
+                        <a href="Firearms.html">Firearms</a>
+                        <a href="Sword.html">Sword</a>
+                        <a href="Crossbow.html">Crossbow</a>
+                    </div>
+                </li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" aria-pressed="false">🌙</button>
+        </nav>
+    </header>
+
+    <div class="page-content-wrapper">
+        <section class="hero">
+            <div class="hero-content">
+                <h1><span class="initials">Zehndar</span></h1>
+                <p class="tagline">A world of war, and untold stories.</p>
+                <p class="description">Welcome to Zehndar — a Sci-fi post-apocalyptic world. Explore the systems, meet the characters, and follow the story as it unfolds.</p>
+                <div class="social-links">
+                    <a href="world.html">Explore the world</a>
+                    <a href="character-profiles.html">Meet the Characters</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-ages fade-in-section">
+            <h2 class="section-title">The Weapons</h2>
+            <div class="ages-grid">
+                <div class="age-card">
+                    <div class="age-icon">🔫</div>
+                    <h3>Firearms</h3>
+                    <p>The guns and rifles of Zehndar — from compact sidearms carried by every faction, to long-range precision rifles that reshaped the art of war.</p>
+                    <a href="Firearms.html" class="card-link">View Firearms →</a>
+                </div>
+                <div class="age-card">
+                    <div class="age-icon">⚔️</div>
+                    <h3>Sword</h3>
+                    <p>Ancient yet ever-present. In a world where technology and steel coexist, the sword remains a mark of skill and the old ways that refuse to die. Wielded by Astrid and Sylis.</p>
+                    <a href="Sword.html" class="card-link">View Sword →</a>
+                </div>
+                <div class="age-card">
+                    <div class="age-icon">🏹</div>
+                    <h3>Crossbow</h3>
+                    <p>Silent, precise, and self-sufficient. The crossbow is the weapon of hunters, scouts, and those who move through Zehndar unseen and leave no trace behind.</p>
+                    <a href="Crossbow.html" class="card-link">View Crossbow →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-about fade-in-section">
+            <h2 class="section-title">About the World</h2>
+            <div class="about-content">
+                <p>Zehndar is a world of magic, mystery, and endless possibilities. The world is rich with history, culture, and the potential for adventure. The world is made up of floating continents, each with its own unique ecosystems and civilizations.</p>
+                <p>The Third Age follows a cast of characters across multiple books, beginning in Year 2033 when a journey sets events in motion that will echo for generations.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer><p>© 2026 C.J Philip. All rights reserved.</p></footer>
+
+    <script src="scroll-animations.js"></script>
+
+    <style>
+        .home-ages {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            background: var(--cream);
+            border-top: 3px solid var(--accent);
+            max-width: 100%;
+        }
+        .home-ages .section-title,
+        .home-about .section-title { text-align: left; }
+        .ages-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .age-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        .age-card:hover { border-color: var(--accent); box-shadow: 0 8px 24px rgba(0,0,0,0.12); transform: translateY(-2px); }
+        .age-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .age-card h3 {
+            font-family: 'Playfair Display', 'Georgia', serif;
+            font-size: 1.4rem; font-weight: 700;
+            margin-bottom: 0.75rem; color: var(--dark-text);
+        }
+        .age-card p { color: var(--gray); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.25rem; }
+        .card-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+        .card-link:hover { color: var(--gold); }
+        .home-about { max-width: 800px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+        .home-about .about-content p { color: var(--gray); font-size: 1.05rem; line-height: 1.9; margin-bottom: 1.25rem; }
+        .section-title {
+            font-family: 'Playfair Display', 'Georgia', serif;
+            font-size: 2.25rem; font-weight: 700;
+            color: var(--dark-text); margin-bottom: 2rem; letter-spacing: -0.5px;
+        }
+        .section-title::after { content: ''; display: block; width: 50px; height: 3px; background: var(--accent); margin-top: 0.75rem; }
+        @media (max-width: 768px) {
+            .home-ages { padding: 2rem 1.5rem; }
+            .home-about { padding: 2rem 1.5rem 3rem; }
+            .ages-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 1.75rem; }
+        }
+    </style>
+</body>
+</html>
+

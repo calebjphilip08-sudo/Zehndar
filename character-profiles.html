@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Profiles — Alvora</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <meta id="meta-theme-color" name="theme-color" content="#071025">
+    <script src="theme.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><span>Alvora</span></a>
+            <button class="hamburger-menu" aria-label="Toggle menu"
+                onclick="this.classList.toggle('active');document.querySelector('.nav-links').classList.toggle('mobile-open');">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="character-profiles.html">Character Profiles</a></li>
+                <li class="dropdown">
+                    <span class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Timeline</span>
+                    <div class="dropdown-content">
+                        <a href="Firearms.html">Firearms</a>
+                        <a href="Sword.html">Sword</a>
+                        <a href="Crossbow.html">Crossbow</a>
+                    </div>
+                </li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" aria-pressed="false">🌙</button>
+        </nav>
+    </header>
+
+    <div class="page-content-wrapper">
+        <div class="page-hero">
+            <h1>Character Profiles</h1>
+            <p class="subtitle">The people who shape the fate of Alvora</p>
+        </div>
+
+        <section class="profiles-section fade-in-section">
+            <div class="age-group">
+                <h2 class="age-label">Emperial Sect</h2>
+                <div class="profiles-grid">
+
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar">👑</div>
+                            <div class="profile-meta">
+                                <h3 class="profile-name">Baltier</h3>
+                                <p class="profile-role">Emperor</p>
+                            </div>
+                        </div>
+                        <div class="profile-body">
+                            <p class="profile-desc">The evil emperor, known for his tyranny and ruthless pursuit of power.</p>
+                            <div class="profile-tags">
+                                <span class="tag">Main Villian</span>>
+                                <span class="tag">Divine</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="age-group">
+                <h2 class="age-label">Rebel Sect</h2>
+                <div class="profiles-grid">
+
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar">🥊</div>
+                            <div class="profile-meta">
+                                <h3 class="profile-name">Azues</h3>
+                                <p class="profile-role">Fighter</p>
+                            </div>
+                        </div>
+                        <div class="profile-body">
+                            <p class="profile-desc">A calm fighter who stands against the tyranny of the emperor and but would always prefer to try talking things through first.</p>
+                            <div class="profile-tags">
+                                <span class="tag">Rebel</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar">🏹</div>
+                            <div class="profile-meta">
+                                <h3 class="profile-name">Lilly</h3>
+                                <p class="profile-role">Sharpshooter</p>
+                            </div>
+                        </div>
+                        <div class="profile-body">
+                            <p class="profile-desc">A skilled shooter and ex soldier of Baltier.</p>
+                            <div class="profile-tags">
+                                <span class="tag">Rebel</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar">🗡️</div>
+                            <div class="profile-meta">
+                                <h3 class="profile-name">Sylis</h3>
+                                <p class="profile-role">Nightblade</p>
+                            </div>
+                        </div>
+                        <div class="profile-body">
+                            <p class="profile-desc">The Infamous Nightblade she is known to stike Baltiers men down quickly in the dead of night.</p>
+                            <div class="profile-tags">
+                                <span class="tag">Rebel</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar">⚔️</div>
+                            <div class="profile-meta">
+                                <h3 class="profile-name">Cyrus</h3>
+                                <p class="profile-role">Ex-Soldier</p>
+                            </div>
+                        </div>
+                        <div class="profile-body">
+                            <p class="profile-desc">A young warrior with unrefined combat skills.</p>
+                            <div class="profile-tags">
+                                <span class="tag">Rebel</span>
+                            </div>
+                        </div>
+                    </div>
+
+                
+                    <div class="profile-card profile-placeholder">
+                        <div class="profile-header">
+                            <div class="profile-avatar">?</div>
+                            <div class="profile-meta">
+                                <h3 class="profile-name">More coming soon</h3>
+                                <p class="profile-role">Character to be added</p>
+                            </div>
+                        </div>
+                        <div class="profile-body">
+                            <p class="profile-desc">This profile is a placeholder. Add new characters by duplicating this card and filling in the details.</p>
+                            <div class="profile-tags">
+                                <span class="tag">Placeholder</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer><p>© 2026 C.J Philip. All rights reserved.</p></footer>
+
+    <script src="scroll-animations.js"></script>
+
+    <style>
+        .profiles-section { max-width: 1200px; margin: 0 auto; padding: 2rem 2rem 5rem; }
+        .age-group { margin-bottom: 4rem; }
+        .age-label {
+            font-family: 'Playfair Display', 'Georgia', serif;
+            font-size: 1.8rem; font-weight: 700;
+            color: var(--dark-text); margin-bottom: 2rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--accent); display: inline-block;
+        }
+        .profiles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.75rem; }
+        .profile-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; transition: all 0.3s ease; }
+        .profile-card:hover { border-color: var(--accent); box-shadow: 0 8px 24px rgba(0,0,0,0.1); transform: translateY(-2px); }
+        .profile-placeholder { opacity: 0.6; border-style: dashed; }
+        .profile-header { display: flex; align-items: center; gap: 1rem; padding: 1.5rem; background: var(--cream); border-bottom: 1px solid var(--border); }
+        .profile-avatar {
+            width: 52px; height: 52px; border-radius: 50%;
+            background: var(--primary); color: white;
+            font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; border: 3px solid var(--gold);
+        }
+        .profile-name { font-family: 'Playfair Display', 'Georgia', serif; font-size: 1.2rem; font-weight: 700; color: var(--dark-text); margin: 0 0 0.2rem; }
+        .profile-role { font-size: 0.85rem; color: var(--accent); font-weight: 500; margin: 0; }
+        .profile-body { padding: 1.5rem; }
+        .profile-desc { color: var(--gray); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1rem; }
+        .profile-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tag { background: var(--cream); border: 1px solid var(--border); color: var(--gray); font-size: 0.75rem; font-weight: 500; padding: 0.25rem 0.65rem; border-radius: 999px; }
+        @media (max-width: 768px) {
+            .profiles-section { padding: 1.5rem 1.5rem 3rem; }
+            .profiles-grid { grid-template-columns: 1fr; }
+            .age-label { font-size: 1.5rem; }
+        }
+    </style>
+</body>
+</html>
+

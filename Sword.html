@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sword — Zehndar</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <meta id="meta-theme-color" name="theme-color" content="#071025">
+    <script src="theme.js" defer></script>
+    <style>
+        .weapon-page { font-family: 'Rajdhani', sans-serif; }
+        .weapon-hero { position: relative; border-bottom: 2px solid var(--accent); background: var(--surface); overflow: hidden; }
+        .weapon-hero::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(196,30,58,0.04) 40px, rgba(196,30,58,0.04) 41px), repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(196,30,58,0.04) 40px, rgba(196,30,58,0.04) 41px); pointer-events: none; }
+        .weapon-hero-inner { position: relative; max-width: 1200px; margin: 0 auto; padding: 3.5rem 2rem 3rem; }
+        .weapon-class-badge { font-family: 'Share Tech Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--accent); background: rgba(196,30,58,0.1); border: 1px solid var(--accent); padding: 0.3rem 0.8rem; display: inline-block; margin-bottom: 0.75rem; }
+        .weapon-hero-inner h1 { font-family: 'Rajdhani', sans-serif; font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 700; line-height: 0.95; color: var(--dark-text); letter-spacing: -1px; text-transform: uppercase; margin: 0 0 0.5rem; }
+        .weapon-hero-inner .sub { font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; color: var(--gray); letter-spacing: 0.15em; }
+        .weapon-icon-block { font-size: 7rem; line-height: 1; opacity: 0.12; position: absolute; right: 2.5rem; top: 50%; transform: translateY(-50%); pointer-events: none; user-select: none; }
+        .weapon-body { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem 5rem; display: grid; grid-template-columns: 1fr 320px; gap: 2.5rem; align-items: start; }
+        .weapon-section { margin-bottom: 2.5rem; }
+        .weapon-section-label { font-family: 'Share Tech Mono', monospace; font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
+        .weapon-section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+        .weapon-section p { color: var(--gray); font-size: 1.05rem; line-height: 1.75; font-weight: 400; margin: 0 0 0.75rem; }
+        .variant-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+        .variant-item { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 0.9rem 1.1rem; display: flex; justify-content: space-between; align-items: center; transition: box-shadow 0.2s; }
+        .variant-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+        .variant-name { font-weight: 600; font-size: 1rem; color: var(--dark-text); }
+        .variant-tag { font-family: 'Share Tech Mono', monospace; font-size: 0.68rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid rgba(196,30,58,0.4); padding: 0.2rem 0.5rem; }
+        .spec-panel { background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--accent); position: sticky; top: 80px; }
+        .spec-panel-header { padding: 1.1rem 1.4rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+        .spec-panel-title { font-family: 'Share Tech Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray); }
+        .spec-status { font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; color: #3fa86e; letter-spacing: 0.1em; display: flex; align-items: center; gap: 0.4rem; }
+        .spec-status::before { content: ''; width: 6px; height: 6px; background: #3fa86e; border-radius: 50%; display: inline-block; }
+        .stat-list { padding: 1.25rem 1.4rem; display: flex; flex-direction: column; gap: 1.1rem; }
+        .stat-header { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+        .stat-name { font-family: 'Share Tech Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); }
+        .stat-val { font-family: 'Share Tech Mono', monospace; font-size: 0.68rem; color: var(--accent); }
+        .stat-bar-track { height: 3px; background: var(--border); overflow: hidden; }
+        .stat-bar-fill { height: 100%; background: var(--accent); width: 0; transition: width 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .spec-table { width: 100%; border-collapse: collapse; border-top: 1px solid var(--border); }
+        .spec-table tr { border-bottom: 1px solid var(--border); }
+        .spec-table tr:last-child { border-bottom: none; }
+        .spec-table td { padding: 0.65rem 1.4rem; font-size: 0.88rem; vertical-align: top; }
+        .spec-table td:first-child { font-family: 'Share Tech Mono', monospace; font-size: 0.67rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); white-space: nowrap; padding-right: 0.5rem; }
+        .spec-table td:last-child { color: var(--dark-text); font-weight: 500; }
+        @media (max-width: 900px) { .weapon-body { grid-template-columns: 1fr; } .spec-panel { position: static; } }
+        @media (max-width: 600px) { .weapon-hero-inner { padding: 2rem 1.5rem; } .weapon-body { padding: 2rem 1.5rem 3rem; } .weapon-icon-block { display: none; } }
+    </style>
+</head>
+<body class="weapon-page">
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><span>Zehndar</span></a>
+            <button class="hamburger-menu" aria-label="Toggle menu"
+                onclick="this.classList.toggle('active');document.querySelector('.nav-links').classList.toggle('mobile-open');">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="character-profiles.html">Character Profiles</a></li>
+                <li class="dropdown">
+                    <span class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Weapons</span>
+                    <div class="dropdown-content">
+                        <a href="Firearms.html">Firearms</a>
+                        <a href="Sword.html">Sword</a>
+                        <a href="Crossbow.html">Crossbow</a>
+                    </div>
+                </li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" aria-pressed="false">🌙</button>
+        </nav>
+    </header>
+
+    <div class="page-content-wrapper">
+        <div class="weapon-hero">
+            <div class="weapon-hero-inner">
+                <div class="weapon-class-badge">// MELEE · CLASS-I</div>
+                <h1>Sword</h1>
+                <p class="sub">ANCIENT STEEL · CLOSE RANGE · WARRIORS &amp; KNIGHTS</p>
+                <div class="weapon-icon-block">⚔️</div>
+            </div>
+        </div>
+
+        <div class="weapon-body">
+            <div>
+                <div class="weapon-section">
+                    <div class="weapon-section-label">Overview</div>
+                    <p>In a world reshaped by post-apocalyptic conflict and emerging technology, the sword has never gone away. Where firearms can fail, jam, or run dry, a blade never does. It is the weapon of warriors who like being close to the action, brutal, and absolute.</p>
+                    <p>Details to be expanded.</p>
+                </div>
+                <div class="weapon-section">
+                    <div class="weapon-section-label">Who Wields It</div>
+                    <p>Low ranked warriors, or those not fit to wield firearms, carry swords to ensure their and others survival. Characters like Sylis has built a legendary reputation of her mastery of the blade.</p>
+                </div>
+                <div class="weapon-section">
+                    <div class="weapon-section-label">Notable Users</div>
+                    <ul class="variant-list">
+                        <li class="variant-item"><span class="variant-name">Cyrus</span><span class="variant-tag">Soldier</span></li>
+                        <li class="variant-item"><span class="variant-name">Sylis</span><span class="variant-tag">Nightblade</span></li>
+                    </ul>
+                </div>
+                <div class="weapon-section">
+                    <div class="weapon-section-label">Known Variants</div>
+                    <ul class="variant-list">
+                        <li class="variant-item"><span class="variant-name">Longsword</span><span class="variant-tag">Standard</span></li>
+                        <li class="variant-item"><span class="variant-name">Wrist Blade</span><span class="variant-tag">Concealed</span></li>
+                        <li class="variant-item"><span class="variant-name">Short Sword</span><span class="variant-tag">Standard</span></li>
+                        <li class="variant-item"><span class="variant-name">Two-Handed Broadsword</span><span class="variant-tag">Rare</span></li>
+                    </ul>
+                </div>
+                <div class="weapon-section">
+                    <div class="weapon-section-label">Lore</div>
+                    <p>Details to be added.</p>
+                </div>
+            </div>
+
+            <aside class="spec-panel">
+                <div class="spec-panel-header">
+                    <span class="spec-panel-title">Weapon Profile</span>
+                    <span class="spec-status">Active</span>
+                </div>
+                <div class="stat-list">
+                    <div class="stat-row">
+                        <div class="stat-header"><span class="stat-name">Damage</span><span class="stat-val">85 / 100</span></div>
+                        <div class="stat-bar-track"><div class="stat-bar-fill" data-width="85"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-header"><span class="stat-name">Range</span><span class="stat-val">15 / 100</span></div>
+                        <div class="stat-bar-track"><div class="stat-bar-fill" data-width="15"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-header"><span class="stat-name">Precision</span><span class="stat-val">75 / 100</span></div>
+                        <div class="stat-bar-track"><div class="stat-bar-fill" data-width="75"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-header"><span class="stat-name">Attack Speed</span><span class="stat-val">65 / 100</span></div>
+                        <div class="stat-bar-track"><div class="stat-bar-fill" data-width="65"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-header"><span class="stat-name">Reliability</span><span class="stat-val">100 / 100</span></div>
+                        <div class="stat-bar-track"><div class="stat-bar-fill" data-width="100"></div></div>
+                    </div>
+                </div>
+                <table class="spec-table">
+                    <tr><td>Class</td><td>Melee</td></tr>
+                    <tr><td>Range</td><td>Close Only</td></tr>
+                    <tr><td>Operators</td><td>Low Ranked Warriors or those not fit to wield firearms</td></tr>
+                    <tr><td>Rarity</td><td>Common – Rare</td></tr>
+                    <tr><td>Status</td><td>Active Use</td></tr>
+                </table>
+            </aside>
+        </div>
+    </div>
+
+    <footer><p>© 2026 C.J Philip. All rights reserved.</p></footer>
+    <script src="scroll-animations.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelectorAll('.stat-bar-fill').forEach(bar => {
+                    bar.style.width = bar.dataset.width + '%';
+                });
+            }, 300);
+        });
+    </script>
+</body>
+</html>
